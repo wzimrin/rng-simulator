@@ -60,7 +60,8 @@ hist n m = T.unlines $ zipWith makeLine results counts
         makeLine (key, val) count = T.concat [keyPart, " :", countPart, " ", valPart]
           where keyPart = T.justifyLeft maxKey ' ' key
                 countPart = T.justifyLeft maxCount ' ' count
-                valPart = T.justifyLeft n ' ' $ T.replicate (div (val * n) maxVal) $ T.singleton '#'
+                valPart = T.justifyLeft n ' ' $ T.replicate (div (val * n) maxVal) $
+                  T.singleton '#'
 
 showHist :: (Show a, Ord a) => Int -> Simulation StdGen a -> IO ()
 showHist n sim = do
